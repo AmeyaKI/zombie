@@ -124,11 +124,18 @@ public class Player {
         for(int i = 0; i < playerInventory.size(); i++) {
             Supply s = playerInventory.get(i);
             if(s instanceof Weapon) {
-                playerAttackDamage += s.getWeaponDamage();
-                playerSpeed += s.getWeaponSpeed();
-                playerInventory.remove(s);
-                result = "Weapon used.\nPlayer Damage increased by " + s.getWeaponDamage() +
-                        "\nPlayer Speed increased by " + s.getWeaponSpeed();
+                if(playerAttackDamage < 10.0 && playerSpeed < 10.0 &&
+                        playerAttackDamage + s.getWeaponDamage() <= 10.0
+                        && playerSpeed + s.getWeaponSpeed() <= 10.0) {
+
+                    playerAttackDamage += s.getWeaponDamage();
+                    playerSpeed += s.getWeaponSpeed();
+                    playerInventory.remove(s);
+                    result = "Weapon used.\nPlayer Damage increased by " + s.getWeaponDamage() +
+                            "\nPlayer Speed increased by " + s.getWeaponSpeed();
+                } else {
+                    result = "Error. Max attack damage and/or speed reached. Action unable to be completed.";
+                }
                 return result;
             }
         }
@@ -141,9 +148,13 @@ public class Player {
         for(int i = 0; i < playerInventory.size(); i++) {
             Supply s = playerInventory.get(i);
             if(s instanceof Potion) {
-                playerHealth += s.getHealingCapacity();
-                playerInventory.remove(s);
-                result = "Potion used. Player Health increased by " + s.getHealingCapacity();
+                if(playerHealth < 25 && playerHealth + s.getHealingCapacity() <= 25) {
+                    playerHealth += s.getHealingCapacity();
+                    playerInventory.remove(s);
+                    result = "Potion used. Player Health increased by " + s.getHealingCapacity();
+                } else {
+                    result = "Error. Max health reached. Action unable to be completed.";
+                }
                 return result;
             }
         }
@@ -155,7 +166,7 @@ public class Player {
 
 
     public String toString() {
-        return "P ";
+        return "PLAYER";
     }
 
 }

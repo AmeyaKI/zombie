@@ -3,7 +3,7 @@ public class fastZombie extends Zombie {
         super(fastHealth * 0.7, fastDamage * 0.7, fastSpeed * 1.4);
     }
     public String toString() {
-        return "fZ";
+        return "fasZom";
     }
 
 

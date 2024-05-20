@@ -15,7 +15,7 @@ public class Weapon extends Supply {
     }
 
     public String toString() {
-        return "W ";
+        return "Weapon";
     }
 
 

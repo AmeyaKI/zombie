@@ -19,8 +19,22 @@ public class Main {
         // Initialize MAP
         generateMapFeatures();
         map[P.getRow()][0] = P;
-        map[9][9] = "EX";
-        System.out.println("Game starts in....\n3\n2\n1\n");
+        map[9][9] = " EXIT ";
+        System.out.println("Game starts in....");
+        try {
+            Thread.sleep(25);
+        } catch(InterruptedException e) {
+            e.printStackTrace();
+        }
+        for(int m = 3; m >= 1; m--) {
+            System.out.println("" + m);
+            try {
+                Thread.sleep(500);
+            } catch(InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
 
         gameStatus = true;
         while(gameStatus) {
@@ -36,7 +50,7 @@ public class Main {
                     int previousCol = P.getCol();
                     P.move(n);
                     Object cell = map[P.getRow()][P.getCol()];
-                    if(cell.equals("__")) {
+                    if(cell.equals("______")) {
                         System.out.println("Moved to empty space. No fighting required.");
                     } else if(cell instanceof Zombie) {
                         if(cell instanceof strongZombie) {
@@ -91,7 +105,7 @@ public class Main {
                         gameStatus = false;
                         System.exit(0);
                     }
-                    map[previousRow][previousCol] = "__";
+                    map[previousRow][previousCol] = "______";
                     map[P.getRow()][P.getCol()] = P;
                     moveo = false;
                 } else {
@@ -202,7 +216,7 @@ public class Main {
                     Potion potion = new Potion(healPower);
                     map[r][c] = potion;
                 } else {
-                    map[r][c] = "__";
+                    map[r][c] = "______";
                 }
 
             }

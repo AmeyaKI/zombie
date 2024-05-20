@@ -29,6 +29,6 @@ public class Zombie {
         return zombieSpeed;
     }
     public String toString() {
-        return "Z ";
+        return "Zombie";
     }
 }

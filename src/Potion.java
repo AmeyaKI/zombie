@@ -7,7 +7,7 @@ public class Potion extends Supply {
         return healingCapacity;
     }
     public String toString() {
-        return "Po";
+        return "Potion";
     }
 
 
